@@ -17,6 +17,11 @@ export default class RandomColorBox extends React.Component {
     this.setState({colorName: e.target.value});
   }
 
+  handleButtonClick = (e) => {
+    let newColor = this.invertColor(this.state.colorName);
+    this.setState({colorName: newColor});
+  }
+
   render() {
     return (
       <div>
@@ -25,7 +30,8 @@ export default class RandomColorBox extends React.Component {
         value={this.state.colorName}
         onChange={this.handleColorChange}></input>
         <button type="button" 
-        style={{ padding: "12px", color: this.invertColor(this.state.colorName), background: this.state.colorName, borderRadius: "4px", fontSize: "16px", fontWeight: 600 }}>Change</button>
+        style={{ padding: "12px", color: this.invertColor(this.state.colorName), background: this.state.colorName, borderRadius: "4px", fontSize: "16px", fontWeight: 600 }}
+        onClick={this.handleButtonClick}>Change</button>
       </div>
     )
   }
